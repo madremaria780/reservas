@@ -7,7 +7,7 @@
  * GESTORES: nombres que aparecen en "¿Quién eres?". Se pueden cambiar cuando queráis.
  */
 window.CONFIG = {
-  API_URL: 'https://script.google.com/macros/s/AKfycbxkixm08sPu0J0b28TZ6CzktB6V9Urums_qfuZeWdHH2BENCE8Jr_L4I0nn_fhzUU_sVQ/exec',
+  API_URL: 'https://script.google.com/macros/s/AKfycbxfZRTAN0aw1OhemzQdRpVywJRW2UoLMn-2vQwcKB8hkDyrb_MHIqP6tGfkLHPGc6NrYA/exec',
   NOMBRE_CASA: 'Casa María Madre',
   SUBTITULO: 'Guadalajara',
   GESTORES: ['Viviane', 'Rafael', 'Gema', 'Carlos'],
