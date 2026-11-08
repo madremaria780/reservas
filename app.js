@@ -51,7 +51,7 @@
   // ---------------- Comunicación con Google (o demostración) ----------------
   var demoListo = null;
   function cargarScript(src) {
-    return new Promise(function (ok, ko) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = ko; document.head.appendChild(s); });
+    return new Promise(function (ok, ko) { var s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = function () { ko(new Error('No se encuentra el archivo ' + src + '. ¿Se subió la carpeta «demo» a GitHub?')); }; document.head.appendChild(s); });
   }
   function prepararDemo() {
     if (!demoListo) {
@@ -79,7 +79,7 @@
       ? prepararDemo().then(function () { return new Promise(function (ok) { setTimeout(function () { ok(window.atender(JSON.parse(JSON.stringify(pet)))); }, 250); }); })
       : fetch(C.API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(pet), redirect: 'follow' })
           .then(function (r) { if (!r.ok) throw new Error('El servidor respondió ' + r.status); return r.json(); })
-          .catch(function (e) { if (e instanceof TypeError) { var x = new Error('Sin conexión. Revisa la cobertura e inténtalo de nuevo.'); x.red = true; throw x; } throw e; });
+          .catch(function (e) { if (e instanceof TypeError) { var x = new Error(navigator.onLine === false ? 'Sin conexión. Revisa la cobertura e inténtalo de nuevo.' : 'No se pudo conectar con Google. Revisa que API_URL termine en /exec y que el script esté implementado para «Cualquier usuario».'); x.red = true; throw x; } if (e instanceof SyntaxError) throw new Error('Google no devolvió datos válidos. Revisa la implementación del script.'); throw e; });
     return p.then(function (r) {
       if (!r || !r.ok) {
         var err = new Error((r && r.error) || 'Error desconocido');
@@ -198,7 +198,7 @@
         if (!location.hash || location.hash === '#/') location.hash = '/calendario'; else pintar();
       }).catch(function (e) {
         S.clave = null;
-        $('#lError').textContent = e.codigo === 'CLAVE' ? 'Clave incorrecta.' : e.message;
+        $('#lError').textContent = e.codigo === 'CLAVE' ? 'Clave incorrecta.' : (e.message || 'No se pudo conectar. Revisa la dirección API_URL de config.js.');
       }).then(function () { cargando(false); });
     }
     $('#lEntrar').onclick = entrar;

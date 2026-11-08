@@ -1,8 +1,8 @@
 /* Guarda la app en el móvil para que abra rápido y sin conexión.
    Al publicar cambios, sube el número de VERSION para que los móviles se actualicen. */
-var VERSION = 'mm-v1.0.0';
+var VERSION = 'mm-v1.0.2';
 var ARCHIVOS = ['./', 'index.html', 'styles.css', 'app.js', 'config.js', 'manifest.webmanifest',
-  'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'demo/gas-mock.js', 'demo/codigo.js'];
+  'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'icons/favicon.png', 'demo/gas-mock.js', 'demo/codigo.js'];
 
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(VERSION).then(function (c) { return c.addAll(ARCHIVOS); }).then(function () { return self.skipWaiting(); }));
