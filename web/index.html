@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#85200C">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="María Madre">
+  <title>Casa María Madre</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/favicon.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <header class="barra">
+      <div class="barra-titulo">
+        <span class="casa" id="tituloCasa">Casa María Madre</span>
+        <span class="vista" id="tituloVista"></span>
+      </div>
+      <button class="icono" id="btnRecargar" aria-label="Actualizar" hidden>
+        <svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </header>
+    <div id="aviso" class="aviso" hidden></div>
+    <main id="vista"></main>
+    <nav class="menu" id="menu" hidden>
+      <button data-ir="calendario"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Calendario</span></button>
+      <button data-ir="reservas"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg><span>Reservas</span></button>
+      <button data-ir="nueva" class="destacado"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Nueva</span></button>
+      <button data-ir="ajustes"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg><span>Ajustes</span></button>
+    </nav>
+  </div>
+  <div id="modal" class="modal" hidden></div>
+  <div id="cargando" class="cargando" hidden><div class="spinner"></div></div>
+  <div id="toast" class="toast" hidden></div>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
